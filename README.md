@@ -8,4 +8,8 @@ El folder workspace tiene código ejemplo separado en 2 grandes carpetas
 Posee códigos ejemplo de graphql-express
 
 ### workspace.gql1
-Posee códigos ejejmplo usando la librería Apollo GraphQL y el ORM Prisma
+   - Posee un proyecto en el raíz con
+      - la librería Apollo GraphQL
+      - ORM Prisma configurado
+      - schema.prisma y schema.graphql definidos
+  - Una carpeta ejemplos_curso con ejemplos básicos que se ejecutan individualmente 
