@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+node_modules
+# Keep environment variables out of version control
+.env
+**/**prisma/*.db*
+**/**prisma/migrations**
