@@ -19,7 +19,20 @@ Posee códigos ejemplo de graphql-express
 - Una carpeta ejemplos_curso con ejemplos básicos que se ejecutan individualmente
 - Autenticación con JWT
 
-## Branchs
+#### Para acceder al ejemplo de apolo server:
+
+1. ir al folder gql1_apollo
+   npm install
+
+2. ejecutar con comando node:
+   node src/index.js
+
+3. opcionalmente con nodemon
+   nodemon src/
+
+# Branches
+
+- main: Última actualización
 
 - dev/00_gql_prisma: Parte introductoria con gql0 y gql1 ejemplos de la introducción a Apollo server y Prisma
 
