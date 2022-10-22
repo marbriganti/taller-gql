@@ -25,7 +25,7 @@ const server = new ApolloServer({
     return {
       ...req,
       prisma,
-      userId: req && req.header.authorization ? getUserId(req) : null,
+      userId: req && req.headers.authorization ? getUserId(req) : null,
     };
   },
 });

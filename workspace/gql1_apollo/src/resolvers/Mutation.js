@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { APP_SECRET, getUserId } = require("../utils");
+const { APP_SECRET } = require("../utils");
 
 async function post(parent, args, context, info) {
   const { userId } = context;
