@@ -4,13 +4,17 @@ const { APP_SECRET } = require("../utils");
 
 async function post(parent, args, context, info) {
   const { userId } = context;
-  return await context.prisma.link.create({
+  const createdLink = await context.prisma.link.create({
     data: {
       url: args.url,
       description: args.description,
       postedBy: { connect: { id: userId } },
     },
   });
+
+  context.pubsub.publish("NEW_LINK", createdLink);
+
+  return createdLink;
 }
 
 async function updateLink(parent, args, context, info) {
@@ -42,7 +46,7 @@ async function signup(parent, args, context, info) {
   });
 
   // 3 Generamos un Json Web Token firmado con un APP_SECRET
-  const token = jwt.sign({ userId: user.id }, APP_SECRET);
+  const token = jwt.sign({ userId: user.id }, APP_SECRET); //podríamos agregar la opciòn de expiración, {epiresIn: '2h'}
 
   // 4 Retornamos el token y los datos del usuario
   return {
@@ -75,10 +79,40 @@ async function login(parent, args, context, info) {
   };
 }
 
+async function vote(parent, args, context, info) {
+  //Recuperamos el userId
+  const { userId } = context;
+  const linkId = Number(args.linkId);
+
+  const vote = await context.prisma.vote.findUnique({
+    where: {
+      linkId_userId: {
+        linkId: linkId,
+        userId,
+      },
+    },
+    select: { linkId: true }, //No necesito los datos, proyecto linkId solamente
+  });
+
+  if (Boolean(vote)) {
+    throw new Error(`Already voted for link: ${linkId}`);
+  }
+
+  const newVote = context.prisma.vote.create({
+    data: {
+      user: { connect: { id: userId } },
+      link: { connect: { id: linkId } },
+    },
+  });
+  context.pubsub.publish("NEW_VOTE", newVote);
+  return newVote;
+}
+
 module.exports = {
   post,
   updateLink,
   deleteLink,
   signup,
   login,
+  vote,
 };

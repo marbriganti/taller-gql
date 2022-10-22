@@ -39,3 +39,7 @@ Posee códigos ejemplo de graphql-express
 - dev/01_gql_prisma_auth: Añade Autentiación y jwt
 
 - dev/02_gql_subscriptions: Añade Subscriptions
+
+# Ejecutar migrations de prisma
+
+npx prisma migrate dev --name "nombre migration"
