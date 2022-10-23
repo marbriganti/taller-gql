@@ -40,6 +40,21 @@ Posee códigos ejemplo de graphql-express
 
 - dev/02_gql_subscriptions: Añade Subscriptions
 
+- dev/03_gql_paginated_queries: Añade Ejemplos de queries paginadas
+
 # Ejecutar migrations de prisma
 
 npx prisma migrate dev --name "nombre migration"
+
+# Enlaces
+
+Enlaces
+Github Código ejemplo y explicaciones del taller https://github.com/marbriganti/taller-gql
+Sitio GraphQL: https://graphql.org
+Github Código fuente del sitio howtographql completo: https://github.com/howtographql/graphql-js
+Sitio npm jsonwebtoken: https://www.npmjs.com/package/jsonwebtoken
+Github node-jsonwebtoken: https://github.com/auth0/node-jsonwebtoken
+JWT libraries: https://jwt.io/libraries
+WebSocket: https://en.wikipedia.org/wiki/WebSocket
+Prisma: https://www.prisma.io/docs/reference
+Bases de datos soportadas por Prisma: https://www.prisma.io/docs/concepts/database-connectors
